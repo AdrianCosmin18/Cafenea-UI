@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {TreeNode} from "primeng/api";
-import {PseudoApiService} from "../../pseudo-api.service";
+import {ProdusDisponibil, PseudoApiService} from "../../pseudo-api.service";
 import {CafeneaSauLocalitate} from "../../cafeneasaulocalitate";
-import {filter, map} from "rxjs";
+import {BehaviorSubject, filter, map} from "rxjs";
+import {Service} from "../../services/service";
 
 @Component({
   selector: 'app-tree',
@@ -14,6 +15,7 @@ export class TreeComponent implements OnInit {
   public listaLocalitati: CafeneaSauLocalitate[] = [];
   public listaCafenele: CafeneaSauLocalitate[] = [];
   public listaJudete: CafeneaSauLocalitate[] = [];
+
 
   public tree: TreeNode[] = [
     {
@@ -46,7 +48,7 @@ export class TreeComponent implements OnInit {
     }
   ]
 
-  constructor(private service: PseudoApiService) { }
+  constructor(private service: PseudoApiService, private service2: Service) { }
 
 
   ngOnInit(): void {
@@ -84,6 +86,18 @@ export class TreeComponent implements OnInit {
         })
       }
     });
+  }
+
+  onNodeSelect(event: any): void{
+
+    const selectedNode = event.node as TreeNode;
+    const idCoffeeShop = this.getIdByCoffeeShopName(selectedNode.label);
+    console.log(idCoffeeShop);
+    this.service2.passInId(idCoffeeShop);
+  }
+
+  getIdByCoffeeShopName(name: string|undefined): number{
+    return this.listaCafenele.filter(cafenea => cafenea.denumire === name)[0].id;
   }
 
 }

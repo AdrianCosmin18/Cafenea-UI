@@ -1,0 +1,23 @@
+
+
+
+<div class="card">
+  <p-table [value]="coffees" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Denumire</th>
+        <th>Descriere</th>
+        <th>Pret</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cofee>
+      <tr>
+        <td>{{ cofee.id }}</td>
+        <td>{{ cofee.denumire }}</td>
+        <td>{{ cofee.descriere }}</td>
+        <td>{{ cofee.pret }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

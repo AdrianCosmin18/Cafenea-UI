@@ -6,18 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TreeComponent } from './components/tree/tree.component';
 import {TreeModule} from "primeng/tree";
+import { RightScreenComponent } from './components/right-screen/right-screen.component';
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TreeComponent
+    TreeComponent,
+    RightScreenComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FlexLayoutModule,
-        TreeModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    TreeModule,
+    TableModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
