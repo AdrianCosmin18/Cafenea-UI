@@ -1,0 +1,9 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
